@@ -15,7 +15,7 @@
 	<description>Exemplo de padrões de projeto em Spring</description>
 	<properties>
 		<java.version>19</java.version>
-		<openapi.version>2.0.2</openapi.version>
+		<openapi.version>1.5.10</openapi.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
@@ -33,8 +33,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-function-webflux-tests</artifactId>
-			<version>2.0.2</version>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${openapi.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>classgraph</artifactId>
+					<groupId>io.github.classgraph</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -45,6 +51,27 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.classgraph</groupId>
+			<artifactId>classgraph</artifactId>
+			<version>4.8.154</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>data-validation</groupId>
+			<artifactId>data-validation</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -67,5 +94,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>clojars</id>
+			<name>Clojars</name>
+			<url>https://repo.clojars.org/</url>
+		</repository>
+	</repositories>
 
 </project>
